@@ -1,37 +1,29 @@
 #!/bin/bash
 
-# Step 1: Define Git repository and branch
-REPO_URL="https://github.com/yourusername/your-repo.git"
-BRANCH="main"
+# Define the Jenkins Home directory (you may need to adjust this path based on your installation)
+JENKINS_HOME="/var/lib/jenkins"  # Default location on Linux
 
-# Step 2: Clone the repository
-echo "Cloning the repository..."
-git clone $REPO_URL
+# List folder structure
+echo "Jenkins Folder Structure:"
 
-# Step 3: Change to the project directory
-cd your-repo
+# List Workspace
+echo "Workspace: $JENKINS_HOME/workspace"
 
-# Step 4: Checkout the specified branch (in case it is not the default branch)
-echo "Checking out the branch: $BRANCH..."
-git checkout $BRANCH
+# List Jobs
+echo "Jobs: $JENKINS_HOME/jobs"
 
-# Step 5: Pull the latest changes (optional if you already cloned the repo)
-echo "Pulling the latest changes..."
-git pull origin $BRANCH
+# List Plugins
+echo "Plugins: $JENKINS_HOME/plugins"
 
-# Step 6: Build the project (Example using Maven)
-echo "Building the project using Maven..."
-mvn clean install
+# List Logs
+echo "Logs: $JENKINS_HOME/logs"
 
-# Step 7: Deploy the build (e.g., copying the jar to a remote server)
-echo "Deploying the artifact..."
-scp target/myapp.jar user@remote-server:/path/to/deploy/
+# List Nodes
+echo "Nodes: $JENKINS_HOME/nodes"
 
-# Step 8: Optional: Push changes back to the repository (if any changes were made)
-echo "Pushing changes back to the repository..."
-git add .
-git commit -m "Automated commit message"
-git push origin $BRANCH
+# List config.xml
+echo "Config File: $JENKINS_HOME/config.xml"
 
-# Step 9: End of script
-echo "Job execution finished."
+# Optionally, list all subdirectories in the Jenkins Home folder
+echo "Listing all subdirectories in Jenkins Home:"
+ls -R $JENKINS_HOME
